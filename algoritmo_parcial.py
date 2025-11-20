@@ -1,4 +1,4 @@
-[1:50 PM, 11/20/2025] KEVIN RAMIREZ 🥇: # Clase base
+# Clase base
 class Criatura:
     def _init_(self, nombre):
         self.nombre = nombre
@@ -35,7 +35,7 @@ def juego():
         
         # El jugador encuentra una criatura
         cria…
-[2:51 PM, 11/20/2025] KEVIN RAMIREZ 🥇: import random
+ import random
 
 # Clase base
 class Criatura:
@@ -60,7 +60,7 @@ class CriaturaHostil(Criatura):
 
 # Función principal del juego
 def juego():
-    print("🌲 Bienvenido al Bosque Encantado 🌲")
+    print("Bienvenido al Bosque Encantado 🌲")
 
     vida = 100
     puntos = 0
@@ -74,7 +74,7 @@ def juego():
 
     while vida > 0:
         print("\n--- Avanzas por el bosque ---")
-        print(f"❤️ Vida: {vida} | ⭐ Puntos: {puntos}")
+        print(f"Vida: {vida} |  Puntos: {puntos}")
 
         criatura = random.choice(criaturas)
         print(f"Te encuentras con: {criatura.nombre}")
@@ -100,17 +100,18 @@ def juego():
             print("Opción no válida, pierdes tu turno.")
 
         if vida <= 0:
-            print("\n💀 Has perdido toda tu vida. Fin del juego.")
+            print("\ Has perdido toda tu vida. Fin del juego.")
             break
 
         continuar = input("¿Deseas seguir explorando? (s/n): ").lower()
         if continuar != "s":
             break
 
-    print("\n🏁 Juego terminado")
+    print("\ Juego terminado")
     print(f"Resultado final -> Vida: {vida} | Puntos: {puntos}")
 
 
 # Iniciar juego
 juego()
+
 
