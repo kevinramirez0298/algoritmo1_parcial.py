@@ -1,6 +1,6 @@
-# Clase base
+[1:50 PM, 11/20/2025] KEVIN RAMIREZ 🥇: # Clase base
 class Criatura:
-    def __init__(self, nombre):
+    def _init_(self, nombre):
         self.nombre = nombre
 
     def interactuar(self):
@@ -34,19 +34,83 @@ def juego():
         print("\nAvanzas por el bosque...")
         
         # El jugador encuentra una criatura
-        criatura = criaturas[0] if input("¿Quieres saber que criatura es ? (s/n): ") == "s" else criaturas[1]
-        print("Te encuentras con:", criatura.nombre)
+        cria…
+[2:51 PM, 11/20/2025] KEVIN RAMIREZ 🥇: import random
 
-        # Interacción
-        print(criatura.interactuar())
+# Clase base
+class Criatura:
+    def _init_(self, nombre):
+        self.nombre = nombre
 
-        # Decisión de continuar
-        opcion = input("¿Deseas seguir explorando? (s/n): ")
-        if opcion.lower() != "s":
-            jugando = False
+    def interactuar(self):
+        pass
 
-    print("Fin de la aventura.")
+
+# Criatura amiga
+class CriaturaAmiga(Criatura):
+    def interactuar(self):
+        return 10, f"{self.nombre} te ayuda y recuperas 10 puntos de vida."
+
+
+# Criatura hostil
+class CriaturaHostil(Criatura):
+    def interactuar(self):
+        return -15, f"{self.nombre} te ataca y pierdes 15 puntos de vida."
+
+
+# Función principal del juego
+def juego():
+    print("🌲 Bienvenido al Bosque Encantado 🌲")
+
+    vida = 100
+    puntos = 0
+
+    criaturas = [
+        CriaturaAmiga("Duende Mágico"),
+        CriaturaAmiga("Hada del Bosque"),
+        CriaturaHostil("Lobo Sombrío"),
+        CriaturaHostil("Ogro Salvaje")
+    ]
+
+    while vida > 0:
+        print("\n--- Avanzas por el bosque ---")
+        print(f"❤️ Vida: {vida} | ⭐ Puntos: {puntos}")
+
+        criatura = random.choice(criaturas)
+        print(f"Te encuentras con: {criatura.nombre}")
+
+        decision = input("¿Interactuar o huir? (i/h): ").lower()
+
+        if decision == "i":
+            cambio_vida, mensaje = criatura.interactuar()
+            vida += cambio_vida
+
+            if cambio_vida > 0:
+                puntos += 5
+            else:
+                puntos -= 3
+
+            print(mensaje)
+
+        elif decision == "h":
+            print("Has huido con cuidado...")
+            puntos -= 1
+
+        else:
+            print("Opción no válida, pierdes tu turno.")
+
+        if vida <= 0:
+            print("\n💀 Has perdido toda tu vida. Fin del juego.")
+            break
+
+        continuar = input("¿Deseas seguir explorando? (s/n): ").lower()
+        if continuar != "s":
+            break
+
+    print("\n🏁 Juego terminado")
+    print(f"Resultado final -> Vida: {vida} | Puntos: {puntos}")
 
 
 # Iniciar juego
 juego()
+
